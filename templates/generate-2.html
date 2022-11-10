@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Franklin | AI 동화 작가</title>
+    <link rel="stylesheet" href="static/css/style-2.css">
+</head>
+<body>
+    <header>
+        <div class="menu-left">
+            <a href="#" class="menu-btn about" type="button">ABOUT</a>
+        </div>
+        <div class="home">
+            <img src="static/logo.png" class="logo">
+        </div>
+        <div class="menu-right">
+            <a href="#" class="menu-btn" id="bookself" type="button">BOOKSHELF</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="nav-bar">
+            <div class="step stp0"></div>
+            <div class="step stp1">1</div>
+            <div class="step stp2">2</div>
+            <div class="step stp3">3</div>
+        </div>
+        <div class="sub">
+            <h1 class="title" id="user-title" value="title"></h1>
+            <div class="prompt-info">
+                <div class="prompt-info-card">
+                    <p class="info-category">인물</p>
+                    <p class="info-item" id="character-info"></p>
+                </div>
+                <div class="prompt-info-card">
+                    <p class="info-category">장소</p>
+                    <p class="info-item" id="place-info"></p>
+                </div>
+                <div class="prompt-info-card">
+                    <p class="info-category">키워드</p>
+                    <p class="info-item" id="keyword-info"></p>
+                </div>
+
+            </div>
+            
+            <p class="story">여러분과 프랭클린의 공동 창작으로 완성된 동화는 과연 몇점일까요? 독창성, 문장 완성도, 다양성 면에서 점수를 드립니다. 완성된 동화를 사람들에게 공유해보세요!</p>
+        </div>
+        <div class="prompt">
+            <h1 class="user-prompt-title">💭 프랭클린과 동화 쓰기</h1>
+            <h3 class="prompt-title user-prompt">프랭클린은 이렇게 쓰고 싶어요!<br>이어질 문장을 선택해주세요.</h3>
+            <button id="franklin-generated" class="candidate" type="submit" onclick="clickCounter();">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare fermentum tempus. Nulla id leo</button>
+            <button id="franklin-generated" class="candidate" type="submit" onclick="clickCounter();">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare fermentum tempus. Nulla id leo</button>
+            <button id="franklin-generated" class="candidate" type="submit" onclick="clickCounter();">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare fermentum tempus. Nulla id leo</button>
+            <h3 class="prompt-title user-prompt">혹시...프랭클린의 문장이 마음에 들지 않나요?</h3>
+            <div class="three-shared-flex">
+                <div style="flex:50%;">
+                    <button class="user-btn-input left short-prompt">전 문장부터 다시!</button>
+                    <button class="user-btn-input left short-prompt">지금 문장을 다시!</button>
+                    <button class="user-btn-input left short-prompt">다음 문장 쓰기!</button>
+                </div>
+            </div>
+            <h3 class="prompt-title user-prompt">나의 한 문장 추가하기</h3>
+            <div class="two-shared-flex">
+                <input type="text" id="user-added-text-input" maxlength = "200" placeholder="ex)구두를 신고 싶은 왕자">
+                <button type="submit" id="text-add-submit-btn">OK</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <div class="progress-stp-1"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-2"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-3"></div>
+        </div>
+    </footer>
+    <script src="static/js/script-2.js"></script>
+    
+</body>
+<script>
+    let cnt = 0;
+        const button = document.getElementById("franklin-generated");
+        function clickCounter(){
+            cnt+=1;
+            console.log(cnt);
+        }
+        if (cnt == 7){
+            location.href = "generate-3.html"
+        }
+        button.addEventListener("click",  clickCounter);
+</script>
+</html>
