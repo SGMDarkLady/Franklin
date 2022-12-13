@@ -1,0 +1,75 @@
+{% extends "shared/base.html" %}
+
+{% block title %} 
+    <link rel="stylesheet" href="{{ url_for('static', path='css/input-style.css') }}">  
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="nav-bar">
+            <div class="step stp0"></div>
+            <div class="step stp1"><a href="/userinput" style="text-decoration:none; background-color: #FEC851; color:black;">1</a></div>
+            <div class="step stp2">2</div>
+            <div class="step stp3">3</div>
+        </div>
+        <div class="sub">
+            <h1 class="title"><span>프랭클린</span>과<br>함께 글쓰는 방법</h1>
+            <h3 class="prompt-title description"><b>동화의 배경 만들기</b></h6>
+            <p class="prompt-p description">동화의 제목, 등장인물의 이름, 이야기가 펼쳐지는 장소, 반드시 넣고 싶은 키워드 3개를 정해서 알려주세요. AI 작가 프랭클린이 알려준 정보로 동화를 써내려 갑니다.</p>
+
+            <h3 class="prompt-title description"><b>프랭클린과 동화 쓰기</b></h6>
+            <p class="prompt-p description">이제 프랭클린이 동화를 써내려가기 시작합시다.<br>
+                프랭클린이 적은 문장 중 바꾸고 싶은 것이 있나요? 새롭게 문장을 생성하거나, 자신의 문장을 추가해 총 8번의 기회를 통해 프랭클린과 동화를 완성해 보세요.</p>
+            
+            <h3 class="prompt-title description"><b>동화가 완성되었습니다</b></h6>
+            <p class="prompt-p description">여러분과 프랭클린의 공동 창작으로 완성된 동화는 과연 몇점일까요? 독창성, 문장 완성도, 다양성 면에서 점수를 드립니다. 완성된 동화를 사람들에게 공유해보세요!</p>
+        </div>
+        <div class="prompt">
+            <form method="post" action="/predict/0">
+                <h1 class="user-prompt-title">💡 동화의 배경 만들기 </h1>
+                <h3 class="prompt-title user-prompt">동화의 제목을 무엇으로 지을까요?</h3>
+                <input type="text" class="user-text-input long-prompt" id="fairytale-title" placeholder="ex)구두를 신고 싶은 왕자" name="storytitle" value="{{fairytaleTitle}}"/>"
+                <!--<input type="text" class="user-text-input long-prompt" id="fairytale-title" placeholder="ex)구두를 신고 싶은 왕자">-->
+                <div class="two-shared-flex">
+                    <div style="flex:50%;">
+                        <h3 class="prompt-title user-prompt">등장 인물의 이름은?</h3>
+                        <input type="text" class="user-text-input med-prompt" id="fairytale-character" placeholder="ex)루이" name="charactername" value="{{charactername}}"/>"
+                    <!--<input type= med-prompt" id="fairytale-character" placeholder="ex)루이">-->
+                    </div>
+                    <div style="flex:50%;">
+                        <h3 class="prompt-title user-prompt">이야기가 펼쳐지는 장소는?</h3>
+                        <input type="text" class="user-text-input med-prompt" id="fairytale-place" placeholder="ex)공주의 옆 나라" name="placename" value="{{placename}}"/>"
+                    <!--<input type="text" class="user-text-input med-prompt" id="fairytale-place" placeholder="ex)공주의 옆 나라">-->
+                    </div>
+                </div>
+                <h3 class="prompt-title user-prompt">반드시 동화에 넣고 싶은 키워드 3개만 뽑아주세요!</h3>
+                <div class="three-shared-flex">
+                    <input type = "text" class="user-btn-input left short-prompt" id="keyword_1" placeholder="ex)빨간 구두" name="keyword_1" value="{{keyword_1}}"/>"
+                    <input type = "text" class="user-btn-input left short-prompt" id="keyword_2" placeholder="ex)춤" name="keyword_2" value="{{keyword_1}}"/>"
+                    <input type = "text" class="user-btn-input left short-prompt" id="keyword_3" placeholder="ex)파티" name="keyword_3" value="{{keyword_1}}"/>"
+                    <!--<input type="text" class="user-btn-input left short-prompt" id="keyword_1" placeholder="ex)빨간 구두">
+                    <input type="text" class="user-btn-input center short-prompt" id="keyword_2" placeholder="ex)춤">
+                    <input type="text" class="user-btn-input right short-prompt" id="keyword_3" placeholder="ex)파티">-->
+                </div>
+                <h3 class="prompt-title user-prompt">동화의 첫 문장을 작성해주세요.</h3>
+                <input type="text" class="user-text-input long-prompt" id="fairytale-sentence" placeholder="ex)어느날 루이 왕자는 빨간 구두를 발견했어요." name="firstSentence" value="{{firstSentence}}"/>" 
+            <div class="submit">
+                <input type = "submit" id="submit-btn" value = "OK" ></button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <div class="progress-stp-1"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-2"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-3"></div>
+        </div>
+    </footer>
+{% endblock %} 

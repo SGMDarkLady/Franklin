@@ -1,0 +1,331 @@
+{% extends "shared/base.html" %}
+
+{% block title %} 
+    <link rel="stylesheet" href="{{ url_for('static', path='css/prompt-style.css') }}">  
+{% endblock %} 
+
+{% block content %}
+    <div class="container">
+        <div class="nav-bar">
+            <div class="step stp0"></div>
+            <div class="step stp1"><a href="/userinput" style="text-decoration:none;">1</a></div>
+            <div class="step stp2">2</div>
+            <div class="step stp3">3</div>
+        </div>
+        <form method="post" action="/predict/{cnt}"></form>
+        <div class="sub">
+                <h1 class="title" value="title" id="storytitle" name="input">{{title}}</h1>
+                <div class="prompt-info">
+                    <div class="prompt-info-card">
+                        <p class="info-category">인물</p>
+                        <p class="info-item" id="character-info" name="charactername">{{name}}</p>
+                    </div>
+                    <div class="prompt-info-card">
+                        <p class="info-category">배경</p>
+                        <p class="info-item" id="place-info">{{place}}</p>
+                    </div>
+                    <div class="prompt-info-card">
+                        <p class="info-category">키워드</p>
+                        <p class="info-item" id="keyword-info">{{keyword}}</p>
+                    </div>
+
+        </div>
+        <p class="story" id="final-story-result" name = "story">{{final_story}}</p>
+        <p class="story" id="story-result" name = "story" hidden>{{final_story}}</p>
+
+        </div>
+
+        <div class="prompt">
+            <h1 class="user-prompt-title">💭 프랭클린과 동화 쓰기</h1>
+            <div id="count-2">
+                <h3 class="prompt-title user-prompt">프랭클린이 이야기를 쓰는 중입니다. 잠시만 기다려주세요.</h3>
+            </div>
+            <div id="bg">
+                <h3 class="prompt-title user-prompt" id="count">{{cnt}}번째 도전입니다.<br>프랭클린이 창작한 문장과 관객의 문장 중 한가지를 선택한 뒤 '다음 문장 쓰기'를 눌러주세요.</h3>
+                <br>
+                <div id = "model-prompt">
+                    <h3 class="prompt-title user-prompt">프랭클린은 이렇게 쓰고 싶어요!<br>이어질 문장을 선택해주세요.</h3>
+                    <!-- <button id="franklin-generated" class="candidate" type="submit" onclick="selected(); generateNew()">{{generatedText_1}}<a href='/predict/{{cnt}}'></a></button> -->
+                    <button id="franklin-generated_1" class="candidate" type="submit" onclick="selected_1();">{{generatedText_1}}</a></button>
+                    <button id="franklin-generated_2" class="candidate" type="submit" onclick="selected_2();">{{generatedText_2}}</a></button>
+                    <button id="franklin-generated_3" class="candidate" type="submit" onclick="selected_3();">{{generatedText_3}}</a></button>
+                    <br> 
+                </div>
+                <div id="user-prompt">
+                    <h3 class="prompt-title user-prompt">나의 두 문장 추가하기</h3>
+                    <h3 class="prompt-title user-prompt" style="opacity:30%;">프랭클린이 이야기를 이해할 수 있도록 꼭 두 문장을 쓰고 우측의 OK버튼을 눌러주세요.</h3>
+                    <div class="two-shared-flex">
+                        <input type="text" id="user-added-text-input" maxlength = "200" placeholder="ex)구두를 신고 싶은 왕자" onclick="choice()">
+                        <button type="submit" id="text-add-submit-btn" onclick="addMySentence();">OK</button>
+                    </div>
+                </div>          
+                
+                <div class="submit" id="finish">
+                    <input type = "submit" id="next-btn" value = "다음 문장 쓰기"></button>
+                </div>
+                <div class="submit">
+                    <input type = "submit" id="comeplete-btn" value = "발행하기" onclick="promptText(); next(); add"><a href="/result"></a></button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <footer>
+        <div class="footer-left">
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <div class="progress-stp-1"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-2"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-3"></div>
+        </div>
+    </footer>
+    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+{% endblock %} 
+{%block scripts%}
+    <script>
+        let cnt = document.getElementById('count').innerHTML;
+        let current = parseInt(cnt.split('번')[0]);
+        console.log('current : ' + current);
+
+        let title = document.getElementById('storytitle').innerHTML;
+        let character_name = document.getElementById('character-info').innerHTML;
+        let place = document.getElementById('place-info').innerHTML;
+        let keyword = document.getElementById('keyword-info').innerHTML;
+
+        let candidate = document.getElementsByClassName("candidate");
+        let OKbtn = document.getElementById("user-added-text-input");
+
+        function handleClick(event) {
+            console.log(event.target);
+            // console.log(this);
+            // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+            console.log(event.target.classList);
+
+            if (event.target.classList[1] === "clicked-candidate") {
+                event.target.classList.remove("clicked-candidate");
+            } else {
+                for (var i = 0; i < candidate.length; i++) {
+                    candidate[i].classList.remove("clicked-candidate");
+            }
+            event.target.classList.add("clicked-candidate");   
+            }
+        }
+
+        function init() {
+            for (var i = 0; i < candidate.length; i++) {
+                candidate[i].addEventListener("click", handleClick);
+            }
+        }
+
+        init();
+
+        function selected_1(){
+            let btn = document.getElementById("franklin-generated_1");
+            let val = btn.innerHTML;
+            document.getElementById("story-result").innerHTML = val+'<br>';
+            document.getElementById("user-prompt").style.visibility = 'hidden';
+        }
+        function selected_2(){
+            let btn = document.getElementById("franklin-generated_2");
+            let val = btn.innerHTML;
+            document.getElementById("story-result").innerHTML = val+'<br>';
+            document.getElementById("user-prompt").style.visibility = 'hidden';
+        }
+        function selected_3(){
+            let btn = document.getElementById("franklin-generated_3");
+            let val = btn.innerHTML;
+            document.getElementById("story-result").innerHTML = val+'<br>';
+            document.getElementById("user-prompt").style.visibility = 'hidden';
+        }
+        function addMySentence(){
+            let sentence = OKbtn.value;
+            //document.getElementById("story-result").innerHTML += sentence+'<br>';
+            document.getElementById("final-story-result").innerHTML += sentence;
+            document.getElementById("final-story-result").innerHTML.style.backgroundColor = "#F2EEEB";
+        }
+        function choice(){
+            document.getElementById("model-prompt").style.visibility = 'hidden';
+        }
+
+
+        function count(){
+            let nextBtn = document.getElementById("next-btn");
+            current += 1;
+            console.log(current)
+            return current
+        }
+/*
+        function generateNew(){
+            let new_prompt = document.getElementById("story-result").innerHTML;
+            const cnt = (current).toString();
+            const dict_values = {'story': new_prompt, 'cnt':current}
+            const s = JSON.stringify(dict_values)
+            console.log(s)
+            let url_after = '/predict/' + cnt
+            $.ajax({
+                url: url_after,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(s)})
+        }
+        */
+        document.getElementById("count-2").style.visibility = 'hidden'
+        document.getElementById("next-btn").addEventListener('click',function() {
+
+            //cnt = document.getElementById('count').innerHTML;
+            current = parseInt(document.getElementById('count').innerHTML.split('번')[0]);
+            //console.log('current : ' + current)
+            // document.getElementById("franklin-generated_1").innerHTML = {generatedText_1};
+            // document.getElementById("franklin-generated_2").innerHTML ={generatedText_2};
+            // document.getElementById("franklin-generated_3").innerHTML = {generatedText_3};
+            // console.log('test: ' + document.getElementById("franklin-generated_1").innerHTML);
+            // console.log('test: ' + document.getElementById("franklin-generated_2").innerHTML);
+            // console.log('test: ' + document.getElementById("franklin-generated_3").innerHTML);
+            document.getElementById("user-prompt").style.visibility = 'hidden';
+            document.getElementById("model-prompt").style.visibility = 'hidden';
+            let new_prompt = ''
+            new_prompt = document.getElementById("story-result").innerHTML;
+            console.log('new_prompt : ' + new_prompt)
+            document.getElementById("final-story-result").innerHTML += new_prompt;
+
+            let predict_prompt = document.getElementById("final-story-result").innerHTML
+            // make_prompt = make_prompt.split('.')
+            // mp_len = make_prompt.length;
+            // for (var i=5; 0<i; i--) {
+            //     predict_prompt += make_prompt[mp_len - i]
+            // }
+            // console.log('predict_prompt : ' + predict_prompt)
+
+            const cnt = (current).toString();
+            const cnt_num = current + 1;
+            title = document.getElementById('storytitle').innerHTML;
+            character_name = document.getElementById('character-info').innerHTML;
+            place = document.getElementById('place-info').innerHTML;
+            keyword = document.getElementById('keyword-info').innerHTML;
+            console.log('cnt:'+ cnt )
+
+            let dict_values = {"title": title,
+                "character":character_name,
+                "place":place,
+                "keyword": keyword,
+                'story': predict_prompt, 'cnt':cnt_num}
+            let s = JSON.stringify(dict_values)
+            let url_after = '/predict/' + cnt_num
+            console.log('json_dict_value :' + s)
+
+            let storyData = {
+                method: 'POST',
+                body: JSON.stringify(dict_values),
+                headers:{
+                    'Content-Type': "application/json",
+                },
+                redirect: 'follow'
+            };
+
+            // async function postData(url = url_after, data = dict_values) {
+            //     const response = await fetch( url, {
+            //         method: 'POST',
+            //         mode: 'cors',
+            //         headers: {
+            //             'Content-Type': "application/json",
+            //         },
+            //         redirect: 'follow',
+            //         referrerPolicy: 'no-referrer',
+            //         body: JSON.stringify(data),
+            //     });
+            //     return response.json();
+            // }
+
+            // postData(url_after, dict_values).then((data) => {
+            //     console.log('json_dict_value :' + data);
+            // });
+            let btn1 = document.getElementById("franklin-generated_1");
+            let btn2 = document.getElementById("franklin-generated_2");
+            let btn3 = document.getElementById("franklin-generated_3");
+            let count = document.getElementById('count');
+            console.log("hello?")
+            fetch(url_after, storyData)
+                .then(
+                    res => res.json(),
+                    document.getElementById("bg").style.visibility = 'hidden',
+                    document.getElementById("count").style.visibility = 'hidden',
+                    document.getElementById("count-2").style.visibility = 'visible'
+                )
+                .then(res => {
+                    document.getElementById("bg").style.visibility = 'visible',
+                    document.getElementById("count").style.visibility = 'visible',
+                    document.getElementById("count-2").style.visibility = 'hidden',
+                    document.getElementById("user-prompt").style.visibility = 'visible';
+                    document.getElementById("model-prompt").style.visibility = 'visible';
+                    document.getElementById("story-result").innerHTML = '';
+                    document.getElementById("user-added-text-input").value = '';
+                    console.log(new_prompt);
+
+                    for (var i = 0; i < candidate.length; i++) {
+                    candidate[i].classList.remove("clicked-candidate");
+                    }  
+                    btn1.innerHTML = res.generatedText_1;
+                    btn2.innerHTML = res.generatedText_2;
+                    btn3.innerHTML = res.generatedText_3;
+                    count.innerHTML = res.cnt+'번째 도전입니다.';
+
+                    if (res.cnt == 8){
+                        console.log('!!!!!!!!!!!!!!!!!!!');
+                        document.getElementById("next-btn").style.visibility = 'hidden';
+                    }
+                })
+                // .then(window.location.replace(url_after))
+        });
+    
+
+/*
+        function newPrompt(){
+            const generatedStory = document.getElementById("story-result").innerHTML;
+            const cnt = (current).toString();
+            const dict_values = {'story': generatedStory}
+            const s = JSON.stringify(dict_values)
+            console.log(s)
+            const url_after = '/predict/' + cnt
+            $.ajax({
+                url: url_after,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(generatedStory)})
+        };
+        */
+
+        var localStorageEnabled = false;
+
+        try { localStorageEnabled = !!localStorage; } catch(e) {};
+        if (localStorageEnabled) localStorage.clear();
+
+        function next()  {
+
+            window.location.href = '/result';
+
+        }
+
+        function promptText(){
+            const title = document.getElementById('storytitle').innerHTML;
+            const character_name = document.getElementById('character-info').innerHTML;
+            const place = document.getElementById('place-info').innerHTML;
+            const keyword = document.getElementById('keyword-info').innerHTML;
+            const story = document.getElementById("final-story-result").innerHTML;
+            var prompt = {
+                "title": title,
+                "character":character_name,
+                "place":place,
+                "keyword": keyword,
+                "story": story,
+        };
+
+        localStorage.setItem("prompt_info", JSON.stringify(prompt));
+    }
+
+    </script>
+{% endblock %}

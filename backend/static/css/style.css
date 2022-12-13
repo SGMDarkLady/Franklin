@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
+@font-face {
+    font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'LeferiBaseType-RegularA';
+    background-color: #F2F2F2;
+}
+
+body{
+    height: 100%;
+}
+
+.wrap{
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 10vh;
+}
+
+header{
+    display:flex;
+    flex-direction: row;
+    border-bottom: solid 1px black;
+    height: 10vh;
+}
+
+.menu-left{
+    flex:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4%;
+}
+
+.home{
+    flex:50%;
+    align-items: center;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+}
+
+.menu-right{
+    flex:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-right: 4%;
+}
+
+.logo{
+    width:10rem;
+}
+
+.menu-btn{
+    /*background-color: transparent;*/
+    /*border: none;*/
+    font-family: 'LeferiBaseType-RegularA';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color:black;
+    width: 100%;
+}
+
+#about{
+    text-align: left;
+}
+
+#bookself{
+    text-align: right;
+}
+
+footer{
+    border-top: solid 1px black;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playground{
+    margin: 0 auto;
+}
+
+#playground-btn{
+    text-align: center;
+    margin: 0 auto;
+}

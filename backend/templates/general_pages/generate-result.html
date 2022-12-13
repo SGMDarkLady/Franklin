@@ -1,0 +1,73 @@
+{% extends "shared/base.html" %}
+
+{% block title %} 
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style-3.css') }}">
+{% endblock %} 
+
+{% block content %}
+    <div class="container">
+        <div class="nav-bar">
+            <div class="step stp0"></div>
+            <div class="step stp1"><a href="/userinput" style="text-decoration:none;">1</a></div>
+            <div class="step stp2">2</div>
+            <div class="step stp3">3</div>
+        </div>
+        <div class="sub">
+            <h1 class="title" id="user-title" value="title"></h1>
+            <div class="prompt-info">
+                <div class="prompt-info-card">
+                    <p class="info-category">인물</p>
+                    <p class="info-item" id="character-info"></p>
+                </div>
+                <div class="prompt-info-card">
+                    <p class="info-category">장소</p>
+                    <p class="info-item" id="place-info"></p>
+                </div>
+                <div class="prompt-info-card">
+                    <p class="info-category">키워드</p>
+                    <p class="info-item" id="keyword-info"></p>
+                </div>
+
+            </div>
+            
+            <p class="story" id="story-final"></p>
+        </div>
+        <div class="prompt">
+            <h1 class="user-prompt-title">📖 동화 완성!</h1>
+            <h3 class="prompt-title user-prompt">완성된 동화 공유하기!</h3>
+            <button class="final-btn" type="submit"><a href="https://notch-beaufort-e05.notion.site/6f36ca2eb8bb4fad9719809c92ac10a2?v=bdfa8c6539c44dc5905a894e018cccb0" onclick="window.open(this.href, '_blank'); return false;" style="text-decoration:none; color:black;">프랭클린의 도서관에 나의 동화 공유하기</a></button>
+            <h3 class="prompt-title user-prompt">다른 동화를 쓰고 싶다면...</h3>
+            <button class="final-btn" type="submit"><a href="/userinput" style="text-decoration:none; color:black;">새로운 동화 쓰러 가기</a></button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <div class="progress-stp-1"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-2"></div>
+            <div class="progress-none"></div>
+            <div class="progress-stp-3"></div>
+        </div>
+    </footer>
+{% endblock %}
+{%block scripts%}
+<script>
+    function init(){
+
+        
+    const { title, character, place, keyword, story } = JSON.parse(localStorage.getItem("prompt_info"));
+    console.log(title, character, place, keyword);
+    document.getElementById("user-title").innerText=title;
+    document.getElementById("character-info").innerText=character;
+    document.getElementById("place-info").innerText=place;
+    document.getElementById("keyword-info").innerText=keyword;
+    document.getElementById("story-final").innerHTML=story;}
+
+init();
+
+</script>
+{% endblock %}
