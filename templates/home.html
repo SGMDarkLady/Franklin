@@ -5,32 +5,139 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Franklin | AI 동화 작가</title>
-    <link rel="stylesheet" href="static/css/style-3.css">
-</head>
+    <link rel="stylesheet" href="static/css/home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="static/js/turn.min.js"></script>
 <body>
     <header>
         <div class="menu-left">
-            <a href="#" class="menu-btn about" type="button">TEAM</a>
+            <a href="#" class="menu-btn about" type="button">ABOUT</a>
         </div>
         <div class="home">
             <img src="static/logo.png" class="logo">
         </div>
         <div class="menu-right">
-            <a href="#" class="menu-btn" id="bookself" type="button">CONTACT</a>
+            <a href="#" class="menu-btn" id="bookself" type="button">BOOKSHELF</a>
         </div>
     </header>
+    <div class="container">
+        <p class="des">마우스로 책 끝을 넘겨 AI 동화 작가 프랭클린이 작성한 동화를 읽어보세요.<br>회색 글씨는 사람의 문장, 검은색 글씨는 AI가 작성한 문장입니다.</p>
+        <div id="flipbook">
+            <div>
+                <img src="static/book/cover.png">
+            </div>
+            <div>
+                <img src="static/book/first.png">
+            </div>
+            <div>
+                <h3 class="sub-title">첫번째 동화| 구두를 신고 싶은 왕자</h3>
+                <p class="txt">
+                    <span>옛날 옛적에 구두를 신고 싶은 왕자 '루이'가 살고 있었어요.
+                    하지만, 루이의 부모님은 '루이'에게 구두는 여자들이 신는 것이라며 뺏었지요.
+                    <br>어느 날, 루이는 이웃 나라 공주님의 파티에 갔어요.
+                    그 때, 루이는 계단에 떨어진 빨간구두를 보게 되었어요.</span>
+                    <br>그리고 예쁜 열매를 바라보며 새까맣고 새것을 보고 무척이나 푸른 구슬리며 말했죠.
+                    "만일 누가 훔쳐 간다면야!" <span>루이는 빨간 구두를 신었어요.</span> 그러자 춤을 잘 출 수 있겠다는 자신감이 생겼죠.
+                    발톱을 내밀며 슬퍼했어요. "다시 돌아갈 것을 알았답니다. <span>저는 오늘이 지나면 춤을추지 못하겠죠?"</span>
+                    <br>그래서 그녀의 말이에요.
+                    "다시 올 텐데..." <span>공주님은 루이 왕자가 춤을출 수 있도록 돕고 싶었어요. 공주는 루이 왕자에게 빨간 구두를 선물했답니다.</span>
+                    <br>루이왕자가 말했어요. "공주님! 오지 않겠습니다."라고 하였지만 더위에 너무너무 사랑하는고양이를 꼭 안고 다시 왔어요.
+                    <br>"제가 어찌해야겠어요?" 루이 왕자가 공주에게 물었어요. <br><span>공주는 용감하게 대답했습니다.</span>
+                    "루이 왕자님! 지금쯤이면 좋으니 준비하도록 해요. 사람들 앞에 있는 그대로 드러내면 아무도 모를 거예요. 
+                    사랑스러운 미소를 지낼 때에는분홍 날개옷을 입고 오세요. 그리고 분홍 날개옷을 입고 춤을 춰요. <span>사람들이 열광할거에요.</span>" 그리고 루이 왕자는 구두를 신었답니다.
+                </p>
+            </div>
+            <div>
+                <img src="static/book/second.png">
+            </div>
+            <div>
+                <h3 class="sub-title">두번째 동화| 인어공주</h3>
+                <p class="txt">
+                    <span>폭풍우가 몰아치는 날 밤, 인어공주는 일렁이는 파도 사이로 왕자님을 보게 되었어요.</span>그 순간 둘은 눈이 마주쳤지요.
+
+                    <br>'아! 저것이 내가 기다리는 사람이구나'라고 생각한 공주가 얼른 달려가서 말을 걸었지요.
+                    공주의 마음속에서 용기가 샘솟았고, 두 사람은 사랑에 빠졌어요.
+
+                    <br>어느 날, 다시 해가 떠오르고, 공주 또한 바다로 나가게 되었을 때, "다시 만나게 된다면 이번에는 꼭 내 손을 잡아 줘."라고 약속을 했지요.
+
+                    <br>인어는 바다를 돌아다니며 멋진 일을 하고 왕자를 만나러 바닷가로 돌아왔어요.
+
+                    <br>왕자는 마법의 힘을 가진 파도를 보며 기뻐했지만, 실은 한 번도 바다에 들어가본 적이 없었지요. 그래서 그런지 바다의 신비한 힘에 매료되었답니다. "바닷속으로 들어가보고 싶어요.", 왕자가 말했지요.
+                    <br>그런데 웬걸요! 깜짝 놀랄 일이 일어났답니다. 하늘에서 예쁜 무지개가 떴어요! 모두가 보는 앞에서 커다란 물고기와 여러 가지 보석이 공중으로 펄쩍 뛰어올랐어요.
+
+                    <br>"그것 봐요. 저기 마법이 숨어 있잖아요. 이 보석 하나면 다른 것도 찾아낼 수 있지 않을까요?"
+                </p>
+            </div>
+            <div>
+                <img src="static/book/third.jpeg">
+                <p class="txt">
+                    <span>별빛이 반짝이는 어느 날이었어요.</span>그 곳에서 만난 한 마리의 흰 고양이와 갈색 털의 검은 토끼가 있었어요. 어느새 둘은 서로에게 호감을 느꼈고, 첫눈에 반하게 된 둘은 매일같이 보려고 온 동네를 돌아다니곤 했죠. 하지만 시간이 지나도 서로의 집은 바뀌지 않았지요.
+                </p>
+            </div>
+            <div>
+                <h3 class="sub-title">세번째 동화| 색깔이 가득한 이야기</h3>
+                <p class="txt">
+                    <br>하루는 회색빛깔 점무늬 눈을 가진 빨간 코끼리가 둘을 찾아왔었죠. "나는 너희들과 함께 놀고 싶어. 우리 집에는 내 친구들이 살고 있어. 어서 가자! 우리 집에 가면 내가 친구들을 모두 집으로 데려다 줄게." 이렇게 해서 두둥실~ 하얀색 커다란 배가 하늘을 가르며 떠 올랐어요. 배는 바다 위를 한참이나 달렸답니다.
+
+                    <br>그리고 얼마 지나지 않아 이상한 소리를 들었는데, 바로 노란색과 파란색의 빛이 보이는 곳이었죠. "이야~~!!" "저기 좀 봐."
+
+                    <br>이윽고 배를 발견한 초록 숲속의 왕자님이 말했답니다. "당장은 친구를 만날 수 없겠지만, 내일은 좋은 일이 생긴단다." 그렇게 해서 그들은 다음날 아침 멋진 모험을 하게 되었어요.
+
+                    <br>"친구들아 이 강을 건너자!" 동물들은 기쁨에 겨워 꺄르르 웃으며 힘차게 걸음을 옮겼는데요, 바로 그때였어요! "아니, 이건 무엇이지?" "아니... 어,, 이게 뭐지??"
+
+                    <br>너무나 궁금했던 동물들은 작은 배에 올라탔지만 곧이어 거대한 배가, 큰 배가 나타났습니다. 그리고 순식간에 일어난 일이었습니다.배 안에서는 엄청난 양의 황금알들이 나오는 것이 아니겠어요? 그런데 놀라운 것은, 알이라고 하기엔 너무 새까만 게 엄청나게 많았다는 거예요. 결국 동물들이 들고 있던 것은 온통 금덩어리 뿐이었고, 황금을 보고 난 동물들의 얼굴은 그야말로 빨갛기만 했어요.
+                </p>
+            </div>
+            <div>
+                <img src="static/book/fourth.png">
+            </div>
+            <div>
+                <h3 class="sub-title">네번째 동화| 빵 냄새가 솔솔 흘러나와요 </h3>
+                <p class="txt">
+                    <span>아침마다 갓 구운 빵 냄새가 솔솔 흘러나오는 빵집이 있었어요.</span>
+
+                    <br>어느 날, 하루는 하얀 설국이 펼쳐져있는 언덕에 있는 그 곳에서 아주 특별한 일이 벌어졌대요. 그날따라 유난히 더 하얗게 반짝이는 한 송이 매화꽃을 보게 되었지요. 그리고 웬걸! 정말 신기하게도 갑자기 눈이 내려올 정도로 하늘이 화창해졌던 거예요. 이렇게나 풍성한 겨울의 눈이라니! 그래서 동네 사람들은 예쁜 모양의 작은 눈 조각들을 모아 커다란 크리스마스 트리 모양을 만들기로 했어요.
+
+                    <br>모두 함께 힘을 합쳐서 무사히 완성된 아름다운 크리스마스트리를 보려고 하는 일념 하나로 사람들은 추운 날씨에도 불구하고 모처럼만에 신나게 달렸지요. 한참 동안이나 쨍한 하늘과 어우러진 노란색 꽃을 보면서 얼마나 즐거웠는지 몰라요.
+
+                    <br>“우리 마을에 하나뿐인 빨간 벽돌집에 사는 소녀는 어디 있니? 맛있는 케이크를 사서 놀러 가자.”
+
+                    <br>그 때였어요. "하얀 눈으로 뒤덮여있던 마을이, 점점 노랗게 변해 가고 있어요." 눈보다 차가운 이 말을 들은 할아버지는 외딴집 앞에 있던 거대한 동상을 보고 깜짝 놀라며 말했답니다. "우리 마을을 지켜 주세요." 바로바로 우리 마을의 수호신 할머니에게 생긴 문제 때문이었지요!
+                </p>
+            </div>
+            <div>
+                <img src="static/book/backcover.png">
+            </div>
+    </div>
     <footer>
-        <div class="footer-left">
-        </div>
-        <div class="footer-center">
-        </div>
-        <div class="footer-right">
-            <div class="progress-stp-1"></div>
-            <div class="progress-none"></div>
-            <div class="progress-stp-2"></div>
-            <div class="progress-none"></div>
-            <div class="progress-stp-3"></div>
+        <div class="generate">
+            <a href="#" class="generation" id="generation" type="button">프랭클린과 동화 쓰러 가기</a>
         </div>
     </footer>
 </body>
+<script type="text/javascript">
+    
+    window.addEventListener('resize', function (e) {
+        flipbook.style.width = '';
+    flipbook.style.height = '';
+    $(flipbook).turn('size', flipbook.clientWidth, flipbook.clientHeight);
+    });
+    
+    $(flipbook).turn({
+        width:900,
+        height:540,
+        page:1,
+        autoCenter:true,
+        duration:2000
+    })
+    $(window).bind('keydown', function(e){
+
+    if (e.target && e.target.tagName.toLowerCase()!='input')
+        if (e.keyCode==37)
+            $('#flipbook').turn('previous');
+        else if (e.keyCode==39)
+            $('#flipbook').turn('next');
+
+    });
+</script>
 </html>

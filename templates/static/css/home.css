@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
+@font-face {
+    font-family: 'LeferiBaseType-RegularA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiBaseType-RegularA.woff') format('woff');
+} 
+
+body{
+    overflow: hiddern;
+}
+
+/*menu*/
+header{
+    display:flex;
+    flex-direction: row;
+    border-bottom: solid 1px black;
+    height: 10vh;
+}
+
+.menu-left{
+    flex:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4%;
+}
+
+.home{
+    flex:50%;
+    align-items: center;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+}
+
+.menu-right{
+    flex:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-right: 4%;
+}
+
+.logo{
+    width:10rem;
+}
+
+.menu-btn{
+    /*background-color: transparent;*/
+    /*border: none;*/
+    font-family: 'LeferiBaseType-RegularA';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color:black;
+    width: 100%;
+    justify-content: center;
+}
+
+.generate{
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+#bookself{
+    text-align: right;
+}
+
+.generation{
+    margin: 0 auto;
+    font-family: 'LeferiBaseType-RegularA';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color:black;
+    width: 100%;
+}
+
+/*flipbook*/
+.container{
+    display:flex;
+    flex-direction: column;
+    height:80vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.des{
+    font-family: 'LeferiBaseType-RegularA';
+    font-style: normal;
+    font-size: 1rem;
+    color:black;
+    opacity: 70%;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+#flipbook{
+    width: 800px;
+    height: 480px;
+}
+
+#flipbook .page{
+    background:#F2F2F2;
+}
+
+#flipbook .page img {
+    max-width: 100%;
+}
+
+#flipbook .shadow, #flipbook.shadow{
+    box-shadow: 0 4px 10px #666;
+}
+
+.sub-title{
+    font-family: 'LeferiBaseType-RegularA';
+    font-weight: 400;
+    font-size: 0.5rem;
+    color:black;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.txt{
+    font-family: 'LeferiBaseType-RegularA';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    color:black;
+    line-height: 120%;
+    padding: 0 3rem 0 3rem;
+    text-align: justify;
+}
+
+span{
+    opacity: 50%;
+}
+
+br{
+    line-height: 170%;
+}
+
+#flipbook .even{
+    background-image:-webkit-linear-gradient(left, #FFF 95%, #ddd 100%);
+    background-image:-moz-linear-gradient(left, #FFF 95%, #ddd 100%);
+    background-image:-o-linear-gradient(left, #FFF 95%, #ddd 100%);
+    background-image:-ms-linear-gradient(left, #FFF 95%, #ddd 100%);
+  }
+  
+  #flipbook .odd{
+    background-image:-webkit-linear-gradient(right, #FFF 95%, #ddd 100%);
+    background-image:-moz-linear-gradient(right, #FFF 95%, #ddd 100%);
+    background-image:-o-linear-gradient(right, #FFF 95%, #ddd 100%);
+    background-image:-ms-linear-gradient(right, #FFF 95%, #ddd 100%);
+  }
+
+/*footer*/
+footer{
+    position: fixed;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    border-top: solid 1px black;
+    height: 10vh;
+    justify-content: center;
+    align-items : center;
+    bottom: 0;
+}
